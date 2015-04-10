@@ -27,9 +27,15 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testMethodsForClass {
     NSArray *methods = [_spectre methodsForClass:[Introspectre class]];
     XCTAssertEqual(methods.count, 2);
+}
+
+- (void)testGetClasses {
+    NSArray *classes = [_spectre getClassList];
+//    NSLog(@"classes %@", classes);
+    XCTAssertNotEqual(classes.count, 0);
 }
 
 @end

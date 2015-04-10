@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface Introspectre : NSObject
-- (void)printClassList;
+
+- (NSArray *)getClassList;
 - (NSArray *)methodsForClass:(Class)clz;
 
 @end

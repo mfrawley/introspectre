@@ -10,9 +10,10 @@
 
 @implementation Introspectre
 
-- (void)printClassList {
+- (NSArray *)getClassList {
     int numClasses;
     Class * classes = NULL;
+    NSMutableArray *classNameList = [[NSMutableArray alloc] init];
     
     classes = NULL;
     numClasses = objc_getClassList(NULL, 0);
@@ -26,14 +27,16 @@
             NSBundle *b = [NSBundle bundleForClass:c];
             if (b == [NSBundle mainBundle]) {
                 const char*className = class_getName(c);
+
                 if (strcmp(className, "AppDelegate") == 0) {
                     continue;
                 }
-                //[self printMethodsForClass:c];
+                [classNameList addObject:[NSString stringWithUTF8String:className]];
             }
         }
         free(classes);
     }
+    return [NSArray arrayWithArray:classNameList];
 }
 
 - (NSArray *)methodsForClass:(Class)clz {
@@ -41,13 +44,13 @@
     int i=0;
     unsigned int mc = 0;
     
-    //id obj = [[clz alloc] init];
     Method * mlist = class_copyMethodList(clz, &mc);
+    NSLog(@"%d", mc);
     
     for(i=0;i<mc;i++) {
         const char *methodName = sel_getName(method_getName(mlist[i]));
         NSString *methodNameStr = [NSString stringWithUTF8String:methodName];
-        [methods setObject:methodNameStr atIndexedSubscript:i];
+        [methods addObject:methodNameStr];
     }
     return [NSArray arrayWithArray:methods];
 }
