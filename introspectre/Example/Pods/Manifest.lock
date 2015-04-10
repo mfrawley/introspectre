@@ -1,0 +1,14 @@
+PODS:
+  - introspectre (0.1.0)
+
+DEPENDENCIES:
+  - introspectre (from `../`)
+
+EXTERNAL SOURCES:
+  introspectre:
+    :path: ../
+
+SPEC CHECKSUMS:
+  introspectre: 03b537f3a5ff2675a00432bb6010553120a12233
+
+COCOAPODS: 0.36.0
