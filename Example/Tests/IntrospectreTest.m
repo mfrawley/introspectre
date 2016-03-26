@@ -34,7 +34,7 @@
 
 - (void)testGetClasses {
     NSArray *classes = [_spectre getClassList];
-//    NSLog(@"classes %@", classes);
+    NSLog(@"classes %@", classes);
     XCTAssertNotEqual(classes.count, 0);
 }
 
